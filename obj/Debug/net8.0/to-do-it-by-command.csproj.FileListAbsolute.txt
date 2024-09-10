@@ -1,0 +1,15 @@
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.AssemblyInfoInputs.cache
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.AssemblyInfo.cs
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.csproj.CoreCompileInputs.cache
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.sourcelink.json
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\to-do-it-by-command.exe
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\to-do-it-by-command.deps.json
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\to-do-it-by-command.runtimeconfig.json
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\to-do-it-by-command.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\to-do-it-by-command.pdb
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\refint\to-do-it-by-command.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.pdb
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.genruntimeconfig.cache
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\ref\to-do-it-by-command.dll
