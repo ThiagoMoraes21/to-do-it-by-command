@@ -18,9 +18,6 @@ namespace to_do_it_by_command
 				if (string.IsNullOrEmpty(input) || input.Length == 0) continue;
 
 				string[] inputParts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-
-				if (inputParts.Length == 0) continue;
-
 				string task = inputParts.First().ToLower();
 				string[] parameters = inputParts[1..];
 

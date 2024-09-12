@@ -14,7 +14,6 @@ namespace to_do_it_by_command.cmd
             get { return "add"; }
         }
 
-
         public string[] Parameters { get; set; } = Array.Empty<string>();
 
         public void Execute()
