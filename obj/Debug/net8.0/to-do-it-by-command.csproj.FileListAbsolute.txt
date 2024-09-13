@@ -13,3 +13,13 @@ C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug
 C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.pdb
 C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.genruntimeconfig.cache
 C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\ref\to-do-it-by-command.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it-by-command.csproj.AssemblyReference.cache
+C:\Users\James\Documents\Projects\c_sharp_projects\to-do-it-by-command\obj\Debug\net8.0\to-do-it.A98E13EC.Up2Date

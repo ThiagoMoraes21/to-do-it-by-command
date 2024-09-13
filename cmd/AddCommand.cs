@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using to_do_it_by_command.cmd.Interfaces;
 using to_do_it_by_command.fs_tasks;
 
@@ -18,10 +14,9 @@ namespace to_do_it_by_command.cmd
 
         public void Execute()
         {
-            Console.WriteLine($"CommandName: {CommandName}\nParameters: {string.Join(", ", Parameters)}");
-            var tasks = new Tasks();
-
-            tasks.AddTask($"{Parameters}");
+            var task = new Tasks();
+            var description = string.Join(" ", Parameters); // TO-DO: sanitize the string
+            task.AddTask(description);
         }
     }
 }
