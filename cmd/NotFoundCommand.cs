@@ -8,7 +8,8 @@ namespace to_do_it_by_command.cmd
         public string[] Parameters { get; set; } = Array.Empty<string>();
 
         public void Execute() {
-            Console.WriteLine($"Could not find command: {CommandName}");
+            Console.WriteLine($"\n> Could not found command: {CommandName}");
+            Console.WriteLine("> Type 'help' to see the available commands and options ;)");
         }
         
     }

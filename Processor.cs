@@ -15,6 +15,7 @@ namespace to_do_it_by_command
         {
             Console.WriteLine("To Do It By Command");
             Console.WriteLine("Enter 'exit' to close the application.");
+            Console.WriteLine("Enter 'help' to see the available commands and options.");
 
             while (true)
             {
