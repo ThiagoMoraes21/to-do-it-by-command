@@ -4,7 +4,14 @@ namespace to_do_it_by_command
 {
     public class Processor
     {
-        public static void StartApplication()
+        private readonly CommandFactory _commandFactory;
+
+        public Processor(CommandFactory commandFactory)
+        {
+            _commandFactory = commandFactory;
+        }
+
+        public void StartApplication()
         {
             Console.WriteLine("To Do It By Command");
             Console.WriteLine("Enter 'exit' to close the application.");
@@ -30,10 +37,9 @@ namespace to_do_it_by_command
             }
         }
 
-        private static void Process(string task, string[] args)
+        private void Process(string task, string[] args)
         {
-            var commandFactory = new CommandFactory(); 
-            var command = commandFactory.CreateCommand(task, args);
+            var command = _commandFactory.CreateCommand(task, args);
             command.Execute();
         }
     }

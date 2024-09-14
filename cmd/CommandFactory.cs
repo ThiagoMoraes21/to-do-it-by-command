@@ -5,10 +5,12 @@ namespace to_do_it_by_command.cmd
     public class CommandFactory
     {
 
-        private readonly IEnumerable<ICommand> _availableCommands =
-            [
-                new AddCommand()
-            ];
+        private readonly IEnumerable<ICommand> _availableCommands;
+
+        public CommandFactory(IEnumerable<ICommand> availableCommands)
+        {
+            _availableCommands = availableCommands;
+        }
 
         public ICommand CreateCommand(string commandName, string[] parameters)
         {

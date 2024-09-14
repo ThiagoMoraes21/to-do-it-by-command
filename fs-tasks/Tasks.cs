@@ -4,7 +4,13 @@ namespace to_do_it_by_command.fs_tasks
 {
     public class Tasks
     {
+        private FsJson _fsJson;
         private int nextId = 1;
+
+        public Tasks(FsJson fsJson)
+        {
+            _fsJson = fsJson;
+        }
 
         public void AddTask(string description)
         {
@@ -13,13 +19,13 @@ namespace to_do_it_by_command.fs_tasks
                 var task = new ToDoTask()
                 {
                     Id = GetNextId(),
-                    Description = description,
+                    Description = description.Trim('"'),
                     Status = Status.Todo,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now
                 };
 
-                FsJson.WriteToJson(task);
+                _fsJson.WriteToJson(task);
 
                 Console.WriteLine("> Oh yeah... Task added successfully!");
                 Console.WriteLine($"> Task ID: {task.Id}");

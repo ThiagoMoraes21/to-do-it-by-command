@@ -5,6 +5,13 @@ namespace to_do_it_by_command.cmd
 {
     public class AddCommand : ICommand
     {
+        private readonly FsJson _fsJson;
+
+        public AddCommand(FsJson fsJson)
+        {
+            _fsJson = fsJson;
+        }
+
         public string CommandName
         {
             get { return "add"; }
@@ -14,7 +21,7 @@ namespace to_do_it_by_command.cmd
 
         public void Execute()
         {
-            var task = new Tasks();
+            var task = new Tasks(_fsJson);
             var description = string.Join(" ", Parameters); // TO-DO: sanitize the string
             task.AddTask(description);
         }
