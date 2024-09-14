@@ -5,7 +5,6 @@ namespace to_do_it_by_command.fs_tasks
     public class Tasks
     {
         private FsJson _fsJson;
-        private int nextId = 1;
 
         public Tasks(FsJson fsJson)
         {
@@ -25,7 +24,7 @@ namespace to_do_it_by_command.fs_tasks
                     UpdatedAt = DateTime.Now
                 };
 
-                _fsJson.WriteToJson(task);
+                _fsJson.WriteToJsonList<ToDoTask>(task);
 
                 Console.WriteLine("> Oh yeah... Task added successfully!");
                 Console.WriteLine($"> Task ID: {task.Id}");
@@ -39,8 +38,7 @@ namespace to_do_it_by_command.fs_tasks
 
         private int GetNextId()
         {
-            // TO-DO: read from json file and return the next available id (sequence)
-            return nextId++;
+            return _fsJson.CountJsonObjects<ToDoTask>() + 1;
         }
 
     }
