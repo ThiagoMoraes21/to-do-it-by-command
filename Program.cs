@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using to_do_it_by_command.cmd;
@@ -31,6 +30,7 @@ namespace to_do_it_by_command
 
 					// register commands and the command factory
 					services.AddTransient<ICommand, AddCommand>();
+					services.AddTransient<ICommand, DoneCommand>();
 					services.AddTransient<ICommand, NotFoundCommand>();
 					services.AddTransient<ICommand, HelpCommand>();
 					services.AddSingleton<CommandFactory>();

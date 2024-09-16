@@ -24,7 +24,7 @@ namespace to_do_it_by_command.fs_tasks
                     UpdatedAt = DateTime.Now
                 };
 
-                _fsJson.WriteToJsonList<ToDoTask>(task);
+                _fsJson.WriteToJsonList(task);
 
                 Console.WriteLine("> Oh yeah... Task added successfully!");
                 Console.WriteLine($"> Task ID: {task.Id}");
@@ -33,6 +33,26 @@ namespace to_do_it_by_command.fs_tasks
             {
                 Console.WriteLine("> On noo... something went wrong, it wasn't possible to add task :(");
                 Console.Write(ex);
+            }
+        }
+
+        public bool UpdateTaskStatus(int id, Status newStatus)
+        {
+            try
+            {
+                var todo = new ToDoTask()
+                {
+                    Status = newStatus,
+                    UpdatedAt = DateTime.Now
+                };
+
+                return _fsJson.FindByIdAndUpdate(id, todo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("> Oh noo... something went wrong when updating the task status :(");
+                Console.Write(ex);
+                return false;
             }
         }
 

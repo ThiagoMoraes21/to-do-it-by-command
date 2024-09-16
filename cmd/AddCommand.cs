@@ -5,19 +5,17 @@ namespace to_do_it_by_command.cmd
 {
     public class AddCommand : ICommand
     {
+        public string CommandName
+        {
+            get { return "add"; }
+        }
+        public string[] Parameters { get; set; } = Array.Empty<string>();
         private readonly FsJson _fsJson;
 
         public AddCommand(FsJson fsJson)
         {
             _fsJson = fsJson;
         }
-
-        public string CommandName
-        {
-            get { return "add"; }
-        }
-
-        public string[] Parameters { get; set; } = Array.Empty<string>();
 
         public void Execute()
         {

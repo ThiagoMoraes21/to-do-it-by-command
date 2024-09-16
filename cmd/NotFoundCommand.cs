@@ -9,7 +9,7 @@ namespace to_do_it_by_command.cmd
 
         public void Execute() {
             Console.WriteLine($"\n> Could not found command: {CommandName}");
-            Console.WriteLine("> Type 'help' to see the available commands and options ;)");
+            Console.WriteLine("> Type 'help' to see the available commands and options");
         }
         
     }

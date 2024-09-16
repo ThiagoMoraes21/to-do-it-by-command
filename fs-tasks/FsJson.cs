@@ -1,8 +1,9 @@
-
+using System;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
-using Microsoft.VisualBasic;
+using System.Linq;
+using System.Reflection;
 
 namespace to_do_it_by_command.fs_tasks
 {
@@ -18,18 +19,37 @@ namespace to_do_it_by_command.fs_tasks
         public void WriteToJsonList<T>(T obj)
         {
             var path = GetFilePath();
-            var tasks = DeserializeJsonList<T>(path);
+            var objs = DeserializeJsonList<T>(path);
 
-            tasks.Add(obj);
+            objs.Add(obj);
+            WriteToFile(path, objs);
+        }
 
-            var options = new JsonSerializerOptions
+        public bool FindByIdAndUpdate<T>(int id, T obj)
+        {
+            var path = GetFilePath();
+            var objs = DeserializeJsonList<T>(path);
+            var foundObject = SearchListByProperty(objs, "Id", id);
+
+            if (foundObject == null) return false;
+
+            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var property in properties)
             {
-                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                WriteIndented = true // format a json that is human-redable
-            };
+                var newValue = property.GetValue(obj);
+                var currentValue = property.GetValue(foundObject);
 
-            string jsonString = JsonSerializer.Serialize(tasks, options);
-            File.WriteAllText(path, jsonString);
+                if (newValue != null && !Equals(newValue, currentValue))
+                {
+                    property.SetValue(foundObject, newValue);
+                }
+            }
+
+            Console.WriteLine($"New object: {JsonSerializer.Serialize(obj)}");
+
+            WriteToFile(path, objs);
+            return true;
         }
 
         public int CountJsonObjects<T>()
@@ -67,6 +87,36 @@ namespace to_do_it_by_command.fs_tasks
             }
 
             return new List<T>();
+        }
+
+        private void WriteToFile<T>(string path, List<T> objs)
+        {
+            var options = new JsonSerializerOptions
+            {
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                WriteIndented = true // format a json that is human-redable
+            };
+
+            string jsonString = JsonSerializer.Serialize(objs, options);
+            File.WriteAllText(path, jsonString);
+        }
+
+        private T? SearchListByProperty<T, Y>(List<T> list, string property, Y searchValue)
+        {
+            return list.FirstOrDefault(obj =>
+            {
+                var foundProperty = typeof(T).GetProperty(property);
+                if (foundProperty != null && foundProperty.PropertyType == typeof(Y))
+                {
+                    var value = foundProperty.GetValue(obj);
+
+                    if(value is Y castValue)
+                    {
+                        return EqualityComparer<Y>.Default.Equals(castValue, searchValue);
+                    }
+                }
+                return false;
+            });
         }
 
     }
