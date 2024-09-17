@@ -16,6 +16,7 @@ Run the following command to build and run the project:
 ```bash
 dotnet build && dotnet run
 help # To see the list of available commands
+exit # To exit the application
 
 # To add a task
 add "Buy groceries"

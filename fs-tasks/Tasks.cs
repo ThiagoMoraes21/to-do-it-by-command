@@ -56,6 +56,33 @@ namespace to_do_it_by_command.fs_tasks
             }
         }
 
+        public void UpdateDescription(int id, string[] description)
+        {
+            try
+            {
+                var newDescription = string.Join(" ", description).Trim('"');
+
+                if(string.IsNullOrWhiteSpace(newDescription))
+                {
+                    Console.WriteLine("> Dude... you have to pass non-empty description ;-;");
+                }
+
+                var todo = new ToDoTask()
+                {
+                    Description = newDescription,
+                    UpdatedAt = DateTime.Now
+                };
+
+                _fsJson.FindByIdAndUpdate(id, todo);
+                Console.WriteLine("> Task updated! Now go do it !!!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("> Oh noo... something went wrong when updating the task ;-;");
+                Console.Write(ex);
+            }
+        }
+
         private int GetNextId()
         {
             return _fsJson.CountJsonObjects<ToDoTask>() + 1;
