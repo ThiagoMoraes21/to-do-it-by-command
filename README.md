@@ -14,8 +14,8 @@ cd backend-projects/task-tracker
 Run the following command to build and run the project:
 
 ```bash
-go build -o task-tracker
---help # To see the list of available commands
+dotnet build && dotnet run
+help # To see the list of available commands
 
 # To add a task
 add "Buy groceries"
