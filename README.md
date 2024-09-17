@@ -7,8 +7,8 @@ Sample solution for the [task-tracker](https://roadmap.sh/projects/task-tracker)
 Clone the repository and run the following command:
 
 ```bash
-git clone https://github.com/arikchakma/backend-projects.git
-cd backend-projects/task-tracker
+git clone https://github.com/ThiagoMoraes21/to-do-it-by-command.git
+cd to-do-it-by-command
 ```
 
 Run the following command to build and run the project:
