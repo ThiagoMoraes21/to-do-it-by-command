@@ -4,16 +4,16 @@ using to_do_it_by_command.fs_tasks.models;
 
 namespace to_do_it_by_command.cmd
 {
-    public class DoneCommand : ICommand
+    public class MarkToDoCommand : ICommand
     {
         public string CommandName
         {
-            get { return "done"; }
+            get { return "mark-todo"; }
         }
         public string[] Parameters { get; set; } = Array.Empty<string>();
         private readonly FsJson _fsJson;
 
-        public DoneCommand(FsJson fsJson)
+        public MarkToDoCommand(FsJson fsJson)
         {
             _fsJson = fsJson;
         }
@@ -21,7 +21,7 @@ namespace to_do_it_by_command.cmd
         public void Execute()
         {
             var task = new Tasks(_fsJson);
-            var newStatus = Status.Done;
+            var newStatus = Status.Todo;
             var taskId = Parameters.First();
             var result = false;
 
@@ -36,7 +36,7 @@ namespace to_do_it_by_command.cmd
                 return;
             }
 
-            Console.WriteLine("> Oh yeah! Another task done!");
+            Console.WriteLine("> Task marked as to-do.");
         }
     }
 }

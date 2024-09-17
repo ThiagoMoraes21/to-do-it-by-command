@@ -30,7 +30,9 @@ namespace to_do_it_by_command
 
 					// register commands and the command factory
 					services.AddTransient<ICommand, AddCommand>();
-					services.AddTransient<ICommand, DoneCommand>();
+					services.AddTransient<ICommand, MarkToDoCommand>();
+					services.AddTransient<ICommand, MarkInProgressCommand>();
+					services.AddTransient<ICommand, MarkDoneCommand>();
 					services.AddTransient<ICommand, NotFoundCommand>();
 					services.AddTransient<ICommand, HelpCommand>();
 					services.AddSingleton<CommandFactory>();

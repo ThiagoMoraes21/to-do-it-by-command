@@ -46,8 +46,6 @@ namespace to_do_it_by_command.fs_tasks
                 }
             }
 
-            Console.WriteLine($"New object: {JsonSerializer.Serialize(obj)}");
-
             WriteToFile(path, objs);
             return true;
         }
@@ -106,7 +104,7 @@ namespace to_do_it_by_command.fs_tasks
             return list.FirstOrDefault(obj =>
             {
                 var foundProperty = typeof(T).GetProperty(property);
-                if (foundProperty != null && foundProperty.PropertyType == typeof(Y))
+                if (foundProperty != null)
                 {
                     var value = foundProperty.GetValue(obj);
 
