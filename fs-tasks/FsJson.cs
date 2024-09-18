@@ -50,6 +50,20 @@ namespace to_do_it_by_command.fs_tasks
             return true;
         }
 
+        public bool DeleteObjectById<T>(int id)
+        {
+            var path = GetFilePath();
+            var objs = DeserializeJsonList<T>(path);
+            var foundObject = SearchListByProperty(objs, "Id", id);
+
+            if (foundObject == null) return false;
+
+            objs.Remove(foundObject);
+
+            WriteToFile(path, objs);
+            return true;
+        }
+
         public int CountJsonObjects<T>()
         {
             var path = GetFilePath();
@@ -108,7 +122,7 @@ namespace to_do_it_by_command.fs_tasks
                 {
                     var value = foundProperty.GetValue(obj);
 
-                    if(value is Y castValue)
+                    if (value is Y castValue)
                     {
                         return EqualityComparer<Y>.Default.Equals(castValue, searchValue);
                     }

@@ -62,7 +62,7 @@ namespace to_do_it_by_command.fs_tasks
             {
                 var newDescription = string.Join(" ", description).Trim('"');
 
-                if(string.IsNullOrWhiteSpace(newDescription))
+                if (string.IsNullOrWhiteSpace(newDescription))
                 {
                     Console.WriteLine("> Dude... you have to pass non-empty description ;-;");
                 }
@@ -79,6 +79,27 @@ namespace to_do_it_by_command.fs_tasks
             catch (Exception ex)
             {
                 Console.WriteLine("> Oh noo... something went wrong when updating the task ;-;");
+                Console.Write(ex);
+            }
+        }
+
+        public void DeleteTask(int taskId)
+        {
+            try
+            {
+                var result = _fsJson.DeleteObjectById<ToDoTask>(taskId);
+                
+                if(result)
+                {
+                    Console.WriteLine("> Task deleted!");
+                    return;
+                }
+
+                Console.WriteLine("> Wasn't possible to delete the task, verify the Id");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("> Oh noo... something went wrong when deleting a task ;-;");
                 Console.Write(ex);
             }
         }
