@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Text.Json;
+using to_do_it_by_command.fs_tasks.helpers;
 using to_do_it_by_command.fs_tasks.models;
 
 namespace to_do_it_by_command.fs_tasks
@@ -104,11 +107,6 @@ namespace to_do_it_by_command.fs_tasks
             }
         }
 
-        private int GetNextId()
-        {
-            return _fsJson.CountJsonObjects<ToDoTask>() + 1;
-        }
-
         public void ListTasks(string status)
         {
             try
@@ -117,20 +115,32 @@ namespace to_do_it_by_command.fs_tasks
 
                 if (!string.IsNullOrEmpty(status))
                 {
-                    var statusValue = (Status)Enum.Parse(typeof(Status), status);
-                    statusOption.Status = (int)statusValue;
+                    var statusValue = EnumHelper.GetEnumValueFromDescription<Status>(status);
+                    statusOption.Status = statusValue;
+                }
+                else
+                {
+                    statusOption = null;
                 }
 
                 var list = _fsJson.ListObjects<ToDoTask, FilterOptions>(statusOption);
 
-                if(list == null)
+                if (list == null || list.Count() == 0)
                 {
                     Console.WriteLine("> No tasks found.");
                     return;
                 }
 
-                Console.WriteLine("** Tasks List **");
-                Console.WriteLine(string.Join("\n - ", list));
+                var printList = list.Select(task =>
+                {
+                    var status = EnumHelper.GetEnumDescription((Status)task.Status);
+                    var line = $" [{task.Id}][{task.Status}] > {task.Description}";
+
+                    return line;
+                });
+
+                Console.WriteLine("\n** Tasks List **\n");
+                Console.WriteLine(string.Join("\n", printList));
             }
             catch (Exception ex)
             {
@@ -138,6 +148,10 @@ namespace to_do_it_by_command.fs_tasks
             }
         }
 
+        private int GetNextId()
+        {
+            return _fsJson.CountJsonObjects<ToDoTask>() + 1;
+        }
     }
 
 }

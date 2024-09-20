@@ -17,13 +17,13 @@ namespace to_do_it_by_command.cmd
         {
             var commands = new List<string>()
             {
-                "> add     -> Adds a new task to the to-dos. Example: add \"new task\"",
-                "> remove  -> Removes a task in the to-dos by id. Example: remove <task-id>",
-                "> list    -> List tasks in the to-dos list.",
+                "add     -> Adds a new task to the to-dos. Example: add \"new task\"",
+                "remove  -> Removes a task in the to-dos by id. Example: remove <task-id>",
+                "list    -> List tasks in the to-dos list.",
             };
 
             Console.WriteLine("\n\n**********************");
-            Console.WriteLine("* Available Commands *");
+            Console.WriteLine("  Available Commands  ");
             Console.WriteLine("**********************");
 
             Console.WriteLine($"\n{ string.Join("\n", commands) }");

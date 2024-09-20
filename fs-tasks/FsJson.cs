@@ -30,7 +30,7 @@ namespace to_do_it_by_command.fs_tasks
         {
             var path = GetFilePath();
             var objs = DeserializeJsonList<T>(path);
-            var foundObject = SearchListByProperty(objs, "Id", id);
+            var foundObject = SearchListByProperty(objs, "Id", id).FirstOrDefault();
 
             if (foundObject == null) return false;
 

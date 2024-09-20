@@ -1,6 +1,5 @@
 using to_do_it_by_command.cmd.Interfaces;
 using to_do_it_by_command.fs_tasks;
-using to_do_it_by_command.fs_tasks.models;
 
 namespace to_do_it_by_command.cmd
 {
@@ -21,7 +20,7 @@ namespace to_do_it_by_command.cmd
         public void Execute()
         {
             var task = new Tasks(_fsJson);
-            var filter = Parameters.First();
+            var filter = Parameters != null && Parameters.Length > 0 ? Parameters.First() : string.Empty;
 
             task.ListTasks(filter);
         }

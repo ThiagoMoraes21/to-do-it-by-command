@@ -1,4 +1,6 @@
 
+using System.ComponentModel;
+
 namespace to_do_it_by_command.fs_tasks.models
 {
     public class ToDoTask
@@ -11,8 +13,11 @@ namespace to_do_it_by_command.fs_tasks.models
     }
 
     public enum Status {
+        [Description("to-do")]
         Todo,
+        [Description("in-progress")]
         InProgress,
+        [Description("done")]
         Done
     }
 }
