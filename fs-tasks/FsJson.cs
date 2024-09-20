@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Reflection;
+using System.Data.SqlTypes;
 
 namespace to_do_it_by_command.fs_tasks
 {
@@ -54,7 +55,7 @@ namespace to_do_it_by_command.fs_tasks
         {
             var path = GetFilePath();
             var objs = DeserializeJsonList<T>(path);
-            var foundObject = SearchListByProperty(objs, "Id", id);
+            var foundObject = SearchListByProperty(objs, "Id", id).FirstOrDefault();
 
             if (foundObject == null) return false;
 
@@ -69,6 +70,24 @@ namespace to_do_it_by_command.fs_tasks
             var path = GetFilePath();
             var objs = DeserializeJsonList<T>(path);
             return objs.Count();
+        }
+
+        public List<T?> ListObjects<T, Y>(Y? filter)
+        {
+            var path = GetFilePath();
+            var objs = DeserializeJsonList<T?>(path);
+
+            if(filter == null) return objs;
+
+            var filterProperties = typeof(Y).GetProperties();
+            
+            if(filterProperties.Length != 1)
+                throw new ArgumentException("Filter object must have just one property.");
+            
+            var filterProperty = filterProperties.First();
+            var filterValue = filterProperty.GetValue(filter);
+
+            return SearchListByProperty(objs, filterProperty.Name, filterValue).ToList();
         }
 
         private string GetFilePath()
@@ -113,9 +132,9 @@ namespace to_do_it_by_command.fs_tasks
             File.WriteAllText(path, jsonString);
         }
 
-        private T? SearchListByProperty<T, Y>(List<T> list, string property, Y searchValue)
+        private IEnumerable<T?> SearchListByProperty<T, Y>(List<T> list, string property, Y searchValue)
         {
-            return list.FirstOrDefault(obj =>
+            return list.Where(obj =>
             {
                 var foundProperty = typeof(T).GetProperty(property);
                 if (foundProperty != null)
@@ -127,6 +146,7 @@ namespace to_do_it_by_command.fs_tasks
                         return EqualityComparer<Y>.Default.Equals(castValue, searchValue);
                     }
                 }
+
                 return false;
             });
         }

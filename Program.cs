@@ -35,6 +35,7 @@ namespace to_do_it_by_command
 					services.AddTransient<ICommand, MarkToDoCommand>();
 					services.AddTransient<ICommand, MarkInProgressCommand>();
 					services.AddTransient<ICommand, MarkDoneCommand>();
+					services.AddTransient<ICommand, ListCommand>();
 					services.AddTransient<ICommand, NotFoundCommand>();
 					services.AddTransient<ICommand, HelpCommand>();
 					services.AddSingleton<CommandFactory>();

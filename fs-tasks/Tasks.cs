@@ -88,8 +88,8 @@ namespace to_do_it_by_command.fs_tasks
             try
             {
                 var result = _fsJson.DeleteObjectById<ToDoTask>(taskId);
-                
-                if(result)
+
+                if (result)
                 {
                     Console.WriteLine("> Task deleted!");
                     return;
@@ -109,5 +109,35 @@ namespace to_do_it_by_command.fs_tasks
             return _fsJson.CountJsonObjects<ToDoTask>() + 1;
         }
 
+        public void ListTasks(string status)
+        {
+            try
+            {
+                var statusOption = new FilterOptions();
+
+                if (!string.IsNullOrEmpty(status))
+                {
+                    var statusValue = (Status)Enum.Parse(typeof(Status), status);
+                    statusOption.Status = (int)statusValue;
+                }
+
+                var list = _fsJson.ListObjects<ToDoTask, FilterOptions>(statusOption);
+
+                if(list == null)
+                {
+                    Console.WriteLine("> No tasks found.");
+                    return;
+                }
+
+                Console.WriteLine("** Tasks List **");
+                Console.WriteLine(string.Join("\n - ", list));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
     }
+
 }
