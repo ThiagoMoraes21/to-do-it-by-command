@@ -23,20 +23,14 @@ namespace to_do_it_by_command.cmd
             var task = new Tasks(_fsJson);
             var newStatus = Status.InProgress;
             var taskId = Parameters.First();
-            var result = false;
 
             if(int.TryParse(taskId, out var convertedId))
             {
-                result = task.UpdateTaskStatus(convertedId, newStatus);
-            }
-
-            if(!result)
-            {
-                Console.WriteLine("> Oh noo... Something went wrong, try again latter");
+                task.UpdateTaskStatus(convertedId, newStatus);
                 return;
             }
 
-            Console.WriteLine("> Oh yeah! One more task in progress!");
+            Console.WriteLine("> Invalid Id ;-;");
         }
     }
 }

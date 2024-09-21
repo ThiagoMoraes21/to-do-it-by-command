@@ -32,12 +32,11 @@ namespace to_do_it_by_command.fs_tasks
             }
             catch (Exception ex)
             {
-                Console.WriteLine("> On noo... something went wrong, it wasn't possible to add task :(");
-                Console.Write(ex);
+                Console.WriteLine(ex.Message);
             }
         }
 
-        public bool UpdateTaskStatus(int id, Status newStatus)
+        public void UpdateTaskStatus(int id, Status newStatus)
         {
             try
             {
@@ -47,13 +46,14 @@ namespace to_do_it_by_command.fs_tasks
                     UpdatedAt = DateTime.Now
                 };
 
-                return _fsJson.FindByIdAndUpdate(id, todo);
+                _fsJson.FindByIdAndUpdate(id, todo);
+
+                var statusDescription = EnumHelper.GetEnumDescription(newStatus);
+                Console.WriteLine($"> Task marked as {statusDescription}.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("> Oh noo... something went wrong when updating the task status :(");
-                Console.Write(ex);
-                return false;
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -79,8 +79,7 @@ namespace to_do_it_by_command.fs_tasks
             }
             catch (Exception ex)
             {
-                Console.WriteLine("> Oh noo... something went wrong when updating the task ;-;");
-                Console.Write(ex);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -100,8 +99,7 @@ namespace to_do_it_by_command.fs_tasks
             }
             catch (Exception ex)
             {
-                Console.WriteLine("> Oh noo... something went wrong when deleting a task ;-;");
-                Console.Write(ex);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -142,7 +140,7 @@ namespace to_do_it_by_command.fs_tasks
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
             }
         }
 
