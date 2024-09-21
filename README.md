@@ -36,6 +36,6 @@ mark-todo 1
 # To list all tasks
 list
 list done
-list todo
+list to-do
 list in-progress
 ```
