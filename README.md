@@ -1,5 +1,6 @@
-# Task Tracker
+# To Do It By Command
 
+A To-Do CLI app made with C#/.Net using the [Command Design Pattern](https://refactoring.guru/design-patterns/command).
 Sample solution for the [task-tracker](https://roadmap.sh/projects/task-tracker) challenge from [roadmap.sh](https://roadmap.sh/).
 
 ## How to run
