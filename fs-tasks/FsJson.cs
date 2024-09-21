@@ -1,10 +1,7 @@
-using System;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using Microsoft.Extensions.Options;
-using System.Linq;
 using System.Reflection;
-using System.Data.SqlTypes;
 
 namespace to_do_it_by_command.fs_tasks
 {
@@ -106,8 +103,6 @@ namespace to_do_it_by_command.fs_tasks
                 try
                 {
                     string existingJson = File.ReadAllText(path);
-
-                    // deserialize existing tasks
                     return JsonSerializer.Deserialize<List<T>>(existingJson) ?? new List<T>();
                 }
                 catch (JsonException ex)

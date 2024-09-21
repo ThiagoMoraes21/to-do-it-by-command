@@ -17,9 +17,12 @@ namespace to_do_it_by_command.cmd
         {
             var commands = new List<string>()
             {
-                "add     -> Adds a new task to the to-dos. Example: add \"new task\"",
-                "remove  -> Removes a task in the to-dos by id. Example: remove <task-id>",
-                "list    -> List tasks in the to-dos list.",
+                "add              -> Adds a new task to the to-dos. Example: add \"new task\"",
+                "remove           -> Removes a task in the to-dos by id. Example: remove <task-id>",
+                "list [options]   -> List tasks in the to-dos list.",
+                " - to-do         -> List tasks with status to-do",
+                " - done          -> List tasks with status done",
+                " - in-progress   -> List tasks with status in-progress",
             };
 
             Console.WriteLine("\n\n**********************");
