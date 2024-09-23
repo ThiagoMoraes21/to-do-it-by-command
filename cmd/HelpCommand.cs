@@ -17,12 +17,12 @@ namespace to_do_it_by_command.cmd
         {
             var commands = new List<string>()
             {
-                "add              -> Adds a new task to the to-dos.\n\n  Example: add \"new task\"\n",
-                "remove           -> Removes a task in the to-dos by id.\n\n  Example: remove <task-id>\n",
-                "update           -> Update a task description in the to-dos by id.\n\n  Example: update <task-id>\n",
-                "mark-todo        -> Update the task status to 'to-do'.\n\n  Example: mark-todo <task-id>\n",
-                "mark-done        -> Update the task status to 'done'.\n\n  Example: mark-done <task-id>\n",
-                "mark-in-progress -> Update the task status to 'in-progress'.\n\n  Example: mark-in-progress <task-id>\n",
+                "add              -> Adds a new task to the to-dos.\n  Example: add \"new task\"\n",
+                "remove           -> Removes a task in the to-dos by id.\n  Example: remove <task-id>\n",
+                "update           -> Update a task description in the to-dos by id.\n  Example: update <task-id>\n",
+                "mark-todo        -> Update the task status to 'to-do'.\n  Example: mark-todo <task-id>\n",
+                "mark-done        -> Update the task status to 'done'.\n  Example: mark-done <task-id>\n",
+                "mark-in-progress -> Update the task status to 'in-progress'.\n  Example: mark-in-progress <task-id>\n",
                 "list [options]   -> List tasks in the to-dos list.",
                 " - to-do         -> List tasks with status to-do",
                 " - done          -> List tasks with status done",
